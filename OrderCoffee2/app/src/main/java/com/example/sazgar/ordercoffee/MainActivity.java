@@ -1,11 +1,13 @@
 package com.example.sazgar.ordercoffee;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     private int count = 1;
@@ -23,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void afzayesh() {
+
+
         if (count < 20)
+
+
             count++;
     }
 
@@ -79,6 +86,22 @@ public class MainActivity extends AppCompatActivity {
         +"\nyou want "+count+numbers);
 
 
+    }
+    public void toastmilk(View view){
+        CheckBox chmilk=(CheckBox)findViewById(R.id.checkboxmilk);
+        boolean milk=chmilk.isChecked();
+        if(milk)
+            Toast.makeText(this,"you want milk with your coffee",Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this,"you did not order milk",Toast.LENGTH_LONG).show();
+    }
+    public void toastsugar(View view){
+        CheckBox chmilk=(CheckBox)findViewById(R.id.checkboxsugar);
+        boolean sugar=chmilk.isChecked();
+        if(sugar)
+            Toast.makeText(this,"you want sugar with your coffee",Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this,"you did not order sugar",Toast.LENGTH_LONG).show();
     }
 }
 

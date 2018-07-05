@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,13 +14,24 @@
     android:background="@drawable/coffee"
     android:alpha="1">
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
+        android:gravity="center"
         android:id="@+id/textviewcostumer"
         android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:background="@drawable/oval"
+
         android:text="costumer"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <EditText
         android:id="@+id/edittextname"
@@ -29,6 +41,7 @@
         android:layout_below="@+id/textviewcostumer"
         android:textColorHint="#ffffff"
         android:textSize="20sp"
+        android:textColor="#fff"
         />
 
     <EditText
@@ -38,40 +51,44 @@
         android:hint="address"
         android:layout_below="@+id/edittextname"
         android:textSize="20sp"
-        android:textColorHint="#fff"/>
+        android:textColorHint="#fff"
+        android:textColor="#fff"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/edittextaddress"
-        android:id="@+id/linear">
+        android:id="@+id/linear"
+        android:textColor="#fff"
+        >
 
         <CheckBox
+            android:onClick="toastsugar"
             android:id="@+id/checkboxsugar"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-
             android:text="sugar"
             android:layout_below="@+id/edittextname"
             android:layout_toRightOf="@+id/buttonplus"
             android:layout_toEndOf="@+id/buttonplus"
             android:textColor="#fff"
             android:textColorHighlight="#ff1919"
-            android:background="#966f6f"/>
+            android:background="@drawable/oval"/>
 
         <CheckBox
             android:id="@+id/checkboxmilk"
+            android:onClick="toastmilk"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-
             android:text="milk"
             android:layout_below="@+id/edittextaddress"
             android:layout_toRightOf="@+id/checkboxsugar"
             android:layout_toEndOf="@+id/checkboxsugar"
-            android:layout_marginLeft="dp"
-            android:layout_marginStart="98dp"
-            android:background="#966f6f"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/oval"
+            android:textColor="#fff"/>
 
     </LinearLayout>
 
@@ -81,14 +98,18 @@
         android:text="count"
         android:layout_below="@+id/linear"
         android:id="@+id/textcount"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:textColor="#fff"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/textcount"
-        android:id="@+id/lin">
+        android:id="@+id/lin"
+
+        >
         <Button
             android:id="@+id/buttonplus"
             android:layout_width="wrap_content"
@@ -98,7 +119,9 @@
             android:layout_alignBaseline="@+id/textviewsummary"
             android:layout_alignBottom="@+id/textviewsummary"
             android:layout_alignLeft="@+id/textView"
-            android:layout_alignStart="@+id/textView" />
+            android:layout_alignStart="@+id/textView"
+            android:background="@drawable/oval"
+            android:textSize="30dp"/>
 
         <TextView
             android:id="@+id/textviewcount"
@@ -109,7 +132,9 @@
             android:layout_alignBaseline="@+id/edittextaddress"
             android:layout_alignBottom="@+id/edittextaddress"
             android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView" />
+            android:layout_toEndOf="@+id/textView"
+            android:textColor="#fff"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/buttonminus"
@@ -122,44 +147,59 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="40dp"
             android:layout_marginEnd="40dp"
-             />
+            android:background="@drawable/oval"
+            android:textSize="30dp"
+
+            />
+
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="summary"
-        android:layout_below="@+id/lin"
-
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:id="@+id/textView" />
-
-
-
-    <TextView
-        android:id="@+id/textviewsummary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="93dp" />
-
-
-
-
-
 
 
     <Button
         android:id="@+id/buttonorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="order"
+        android:text="summary"
         android:onClick="summary"
-        android:layout_below="@+id/textviewsummary"
+        android:layout_below="@+id/lin"
+        android:background="@drawable/oval"
+        android:layout_marginTop="16dp"
+        android:textColor="#fff"
         />
 
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textviewsummary"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/buttonorder"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:background="@drawable/rectangle"
+        android:hint="thanks for choosing us"
+        android:gravity="center"
+        android:textColorHint="#fff"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval"
+        android:text="order"
+        android:textColor="#fff"
+        />
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+
+
+
+
+</LinearLayout>
+
